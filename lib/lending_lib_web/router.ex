@@ -20,6 +20,14 @@ defmodule LendingLibWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/collection", LendingLibWeb do
+    pipe_through :browser
+
+    resources "/authors", AuthorController
+    resources "/genres", GenreController
+    resources "/books", BookController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", LendingLibWeb do
   #   pipe_through :api
