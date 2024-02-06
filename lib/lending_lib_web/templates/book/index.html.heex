@@ -5,6 +5,8 @@
     <tr>
       <th>Title</th>
       <th>Publication date</th>
+      <th>Author</th>
+      <th>Genre</th>
 
       <th></th>
     </tr>
@@ -14,6 +16,8 @@
     <tr>
       <td><%= book.title %></td>
       <td><%= book.publication_date %></td>
+      <td><%= book.author.name %></td>
+      <td><%= book.genre.name %></td>
 
       <td>
         <span><%= link "Show", to: Routes.book_path(@conn, :show, book) %></span>

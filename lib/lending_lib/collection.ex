@@ -73,14 +73,15 @@ defmodule LendingLib.Collection do
   # Books
 
   def list_books do
-    Repo.all(Book)
+    from(b in Book, preload: [:author, :genre])
+    |> alphabetical(:title)
+    |> Repo.all()
   end
 
   def get_book!(id) do
     Book
     |> Repo.get!(id)
-    |> Repo.preload(:genre)
-    |> Repo.preload(:author)
+    |> Repo.preload([:author, :genre])
   end
 
   def create_book(attrs \\ %{}) do
